@@ -74,7 +74,7 @@ const StorePage = () => {
   };
 
   return (
-    <div className="font-body-md text-on-surface bg-background min-h-screen flex flex-col">
+    <div className="font-body-md text-on-surface bg-background min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
       {/* TopAppBar Shell */}
       <Header>
         <div className="relative">
@@ -87,12 +87,12 @@ const StorePage = () => {
                 }
               }
             }}
-            className="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high transition-colors p-base rounded-full cursor-pointer focus:outline-none"
+            className="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high transition-colors p-base rounded-full cursor-pointer focus:outline-none hover:text-primary"
           >
             shopping_cart
           </button>
           {cart.length > 0 && (
-            <span className="absolute top-0 right-0 bg-primary-container text-on-primary-container text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
+            <span className="absolute -top-1 -right-1 bg-primary-container text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full pointer-events-none shadow-glow-sm">
               {cart.length}
             </span>
           )}
@@ -100,14 +100,14 @@ const StorePage = () => {
       </Header>
 
       {/* Main Content */}
-      <main className="flex-grow pt-20 pb-24 px-margin-mobile">
+      <main className="flex-grow pt-24 pb-24 px-margin-mobile max-w-6xl mx-auto w-full">
         {/* Search & Filter Section */}
         <section className="mt-base mb-lg">
           <div className="relative w-full group">
-            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary-container transition-colors">search</span>
+            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
             <input 
-              className="w-full bg-surface-container-low border border-outline-variant text-body-md rounded-lg py-sm pl-11 pr-base focus:border-primary-container focus:ring-0 placeholder:text-on-tertiary-fixed-variant font-label-technical focus:outline-none" 
-              placeholder="Buscar cascos, piezas o accesorios..." 
+              className="w-full bg-surface-container border border-outline-variant text-body-md rounded-sm py-sm pl-11 pr-base focus:border-primary focus:ring-1 focus:ring-primary/20 placeholder:text-on-surface-variant/50 font-label-technical focus:outline-none transition-all shadow-sm" 
+              placeholder="BUSCAR CASCOS, PIEZAS O ACCESORIOS..." 
               type="text" 
             />
           </div>
@@ -117,7 +117,7 @@ const StorePage = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 font-label-sm text-label-sm px-md py-xs rounded-full transition-all ${activeCategory === cat ? 'bg-primary-container text-on-primary-container shadow-lg' : 'bg-surface-container-high text-on-surface-variant hover:bg-surface-variant border border-outline-variant'}`}
+                className={`flex-shrink-0 font-label-sm text-[10px] px-md py-xs rounded-sm transition-all uppercase tracking-widest font-black ${activeCategory === cat ? 'bg-gradient-ivk text-white shadow-glow-sm' : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high border border-outline-variant'}`}
               >
                 {cat}
               </button>
@@ -128,30 +128,30 @@ const StorePage = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden flex flex-col group transition-all hover:border-primary-container/50">
+            <div key={product.id} className="bg-surface-container border border-outline-variant rounded-lg overflow-hidden flex flex-col group transition-all hover:border-primary/50 shadow-sm hover:shadow-md">
               <div className="relative aspect-square overflow-hidden bg-surface-container-highest">
                 <img 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                   src={product.image} 
                   alt={product.name}
                 />
                 {product.tag && (
                   <div className="absolute top-xs left-xs">
-                    <span className={`${product.tagColor || 'bg-primary-container text-white'} text-[10px] font-bold px-xs py-[2px] rounded uppercase`}>
+                    <span className={`${product.tagColor || 'bg-gradient-ivk text-white'} text-[9px] font-black px-xs py-[2px] rounded-sm uppercase tracking-tighter shadow-sm`}>
                       {product.tag}
                     </span>
                   </div>
                 )}
               </div>
               <div className="p-sm flex flex-col flex-grow">
-                <h3 className="font-label-sm text-label-sm text-on-surface line-clamp-2 min-h-[32px]">{product.name}</h3>
-                <div className="mt-auto pt-xs flex items-center justify-between">
-                  <span className="font-label-technical text-primary-container font-bold">{product.price}</span>
+                <h3 className="font-label-sm text-[11px] text-on-surface line-clamp-2 min-h-[32px] uppercase font-bold tracking-tight leading-tight group-hover:text-primary transition-colors">{product.name}</h3>
+                <div className="mt-auto pt-sm flex items-center justify-between">
+                  <span className="font-label-technical text-primary font-black text-sm">{product.price}</span>
                   <button 
                     onClick={() => addToCart(product)}
-                    className="bg-surface-container-highest p-xs rounded-lg text-primary hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-90"
+                    className="bg-surface-container-highest p-xs rounded-sm text-on-surface hover:bg-primary hover:text-on-primary transition-all active:scale-90 border border-outline-variant/30"
                   >
-                    <span className="material-symbols-outlined text-[18px]">shopping_cart</span>
+                    <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
                   </button>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const StorePage = () => {
 
         {/* Pagination/Load More */}
         <div className="mt-xl flex justify-center">
-          <button className="border border-outline text-on-surface font-label-sm text-label-sm px-xl py-sm rounded-lg hover:bg-surface-container-high transition-all active:scale-95">
+          <button className="bg-surface-container border border-outline-variant text-on-surface font-label-sm text-[10px] px-xl py-md rounded-sm hover:bg-surface-container-high transition-all active:scale-95 uppercase tracking-widest font-black shadow-sm">
             Cargar más productos
           </button>
         </div>
