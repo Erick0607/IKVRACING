@@ -110,12 +110,12 @@ const BookingPage = () => {
                     <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">chevron_right</button>
                   </div>
                 </div>
-                <div className="custom-calendar-grid text-center mb-sm">
+                <div className="grid grid-cols-7 text-center mb-sm w-full">
                   {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((day, i) => (
                     <span key={i} className={`font-label-sm font-bold ${day === 'D' ? 'text-primary-container' : 'text-on-surface-variant'}`}>{day}</span>
                   ))}
                 </div>
-                <div className="custom-calendar-grid gap-y-sm text-center">
+                <div className="flex grid grid-cols-7 gap-y-sm text-center w-full">
                   {[28, 29, 30].map((d) => (
                     <span key={d} className="h-10 w-full flex items-center justify-center font-label-technical text-on-surface-variant/20">{d}</span>
                   ))}

@@ -21,8 +21,9 @@
 }
 
 .custom-calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  width: 100%;
 }
 
 /* Custom scrollbar for industrial feel */
