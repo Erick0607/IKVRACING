@@ -208,7 +208,6 @@ const BookingPage = () => {
           </div>
         </div>
       </main>
-      </main>
 
       {/* Bottom Nav Bar */}
       <BottomNav />
