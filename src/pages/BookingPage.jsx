@@ -110,19 +110,17 @@ const BookingPage = () => {
                     <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">chevron_right</button>
                   </div>
                 </div>
-                <div className="grid grid-cols-7 text-center mb-sm w-full">
+                <div className="grid grid-cols-7 gap-y-2 text-center w-full" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)' }}>
                   {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((day, i) => (
-                    <span key={i} className={`font-label-sm font-bold ${day === 'D' ? 'text-primary-container' : 'text-on-surface-variant'}`}>{day}</span>
+                    <span key={i} className={`text-xs font-bold ${day === 'D' ? 'text-red-500' : 'text-gray-400'}`}>{day}</span>
                   ))}
-                </div>
-                <div className="flex grid grid-cols-7 gap-y-sm text-center w-full">
                   {[28, 29, 30].map((d) => (
-                    <span key={d} className="h-10 w-full flex items-center justify-center font-label-technical text-on-surface-variant/20">{d}</span>
+                    <span key={d} className="h-10 w-full flex items-center justify-center text-gray-800">{d}</span>
                   ))}
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((d) => (
                     <button
                       key={d}
-                      className={`h-10 w-full flex items-center justify-center font-label-technical rounded-lg transition-all duration-200 ${d === selectedDate ? 'bg-primary-container text-on-primary-container font-bold shadow-lg scale-110' : 'hover:bg-surface-variant text-on-surface hover:scale-105'} ${d === 4 || d === 11 ? 'text-primary-container underline underline-offset-4' : ''}`}
+                      className={`h-10 w-full flex items-center justify-center rounded-lg transition-all duration-200 ${d === selectedDate ? 'bg-[#ff544c] text-white font-bold' : 'hover:bg-gray-800 text-gray-200'}`}
                       onClick={() => setSelectedDate(d)}
                     >
                       {d < 10 ? `0${d}` : d}
