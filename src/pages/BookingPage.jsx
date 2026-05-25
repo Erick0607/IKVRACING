@@ -112,15 +112,15 @@ const BookingPage = () => {
                 </div>
                 <div className="grid grid-cols-7 gap-y-2 text-center w-full" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)' }}>
                   {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((day, i) => (
-                    <span key={i} className={`text-xs font-bold ${day === 'D' ? 'text-red-500' : 'text-gray-400'}`}>{day}</span>
+                    <span key={i} className={`text-xs font-bold ${day === 'D' ? 'text-primary-container' : 'text-on-surface-variant'}`}>{day}</span>
                   ))}
                   {[28, 29, 30].map((d) => (
-                    <span key={d} className="h-10 w-full flex items-center justify-center text-gray-800">{d}</span>
+                    <span key={d} className="h-10 w-full flex items-center justify-center text-on-surface-variant/20">{d}</span>
                   ))}
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((d) => (
                     <button
                       key={d}
-                      className={`h-10 w-full flex items-center justify-center rounded-lg transition-all duration-200 ${d === selectedDate ? 'bg-[#ff544c] text-white font-bold' : 'hover:bg-gray-800 text-gray-200'}`}
+                      className={`h-10 w-full flex items-center justify-center rounded-lg transition-all duration-300 ${d === selectedDate ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_20px_rgba(255,84,76,0.5)] scale-110' : 'hover:bg-surface-variant text-on-surface hover:scale-105'} ${d === 4 || d === 11 ? 'text-primary-container underline underline-offset-4' : ''}`}
                       onClick={() => setSelectedDate(d)}
                     >
                       {d < 10 ? `0${d}` : d}
@@ -169,7 +169,7 @@ const BookingPage = () => {
               <h3 className="font-headline-md text-lg uppercase tracking-wider mb-md text-on-surface">Detalles de la Moto</h3>
               <div className="flex flex-col gap-lg">
                 <div className="space-y-xs">
-                  <label className="font-label-sm text-primary-container font-bold uppercase tracking-tighter block ml-1">Modelo</label>
+                  <label className="text-xs text-primary-container font-bold uppercase tracking-tighter block ml-1">Modelo</label>
                   <input 
                     className="w-full bg-surface border border-outline-variant rounded-xl p-md text-on-surface focus:outline-none focus:border-primary-container transition-all font-label-technical placeholder:text-on-surface-variant/30" 
                     placeholder="Ej. Yamaha MT-07" 
@@ -179,7 +179,7 @@ const BookingPage = () => {
                   />
                 </div>
                 <div className="space-y-xs">
-                  <label className="font-label-sm text-primary-container font-bold uppercase tracking-tighter block ml-1">Descripción</label>
+                  <label className="text-xs text-primary-container font-bold uppercase tracking-tighter block ml-1">Descripción</label>
                   <textarea 
                     className="w-full bg-surface border border-outline-variant rounded-xl p-md text-on-surface focus:outline-none focus:border-primary-container transition-all font-body-md placeholder:text-on-surface-variant/30" 
                     placeholder="Describe brevemente lo que necesita tu moto..." 
