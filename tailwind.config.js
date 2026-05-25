@@ -54,7 +54,20 @@ export default {
         "surface-container-low": "#1a1c1c",
         "surface": "#121414",
         "tertiary-fixed-dim": "#c8c6c5",
-        "secondary-container": "#3b4b53"
+        "secondary-container": "#3b4b53",
+        "ivk-red": "#ff544c",
+        "ivk-glow": "rgba(255, 84, 76, 0.4)",
+        "ivk-black": "#121414"
+      },
+      boxShadow: {
+        'glow': '0 0 20px 2px rgba(255, 84, 76, 0.4)',
+        'glow-strong': '0 0 30px 5px rgba(255, 84, 76, 0.6)',
+        'inner-glow': 'inset 0 0 15px rgba(255, 84, 76, 0.2)',
+      },
+      backgroundImage: {
+        'gradient-ivk': 'linear-gradient(135deg, #ff544c 0%, #93000a 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #1e2020 0%, #121414 100%)',
+        'gradient-card': 'linear-gradient(145deg, #282a2b 0%, #1a1c1c 100%)',
       },
       borderRadius: {
         "DEFAULT": "0.125rem",

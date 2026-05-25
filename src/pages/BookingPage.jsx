@@ -62,20 +62,21 @@ const BookingPage = () => {
         <div className="flex flex-col gap-gutter">
           
           {/* Step 1: Service Type */}
-          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg">
-            <div className="flex items-center gap-sm mb-md">
-              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${selectedService ? 'bg-primary-container text-on-primary-container' : 'bg-surface-variant text-on-surface-variant'}`}>01</span>
+          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg shadow-glow shadow-primary-container/5 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+            <div className="flex items-center gap-sm mb-md relative z-10">
+              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${selectedService ? 'bg-gradient-ivk text-white shadow-glow-sm' : 'bg-surface-variant text-on-surface-variant'}`}>01</span>
               <h3 className="font-headline-md text-body-lg uppercase tracking-wider">Tipo de Servicio</h3>
             </div>
-            <div className="grid grid-cols-1 gap-sm">
+            <div className="grid grid-cols-1 gap-sm relative z-10">
               {services.map((service) => (
                 <button
                   key={service.id}
-                  className={`flex items-center justify-between p-md border rounded-lg transition-all group ${selectedService === service.id ? 'border-primary-container bg-surface-variant' : 'border-outline-variant hover:border-primary-container'}`}
+                  className={`flex items-center justify-between p-md border rounded-lg transition-all group ${selectedService === service.id ? 'border-primary-container bg-surface-variant shadow-inner-glow' : 'border-outline-variant hover:border-primary-container'}`}
                   onClick={() => setSelectedService(service.id)}
                 >
                   <div className="flex items-center gap-md">
-                    <span className={`material-symbols-outlined ${selectedService === service.id ? 'text-primary-container' : 'text-on-surface-variant group-hover:text-primary-container'}`}>{service.icon}</span>
+                    <span className={`material-symbols-outlined ${selectedService === service.id ? 'text-primary-container drop-shadow-[0_0_8px_rgba(255,84,76,0.6)]' : 'text-on-surface-variant group-hover:text-primary-container'}`}>{service.icon}</span>
                     <span className="font-body-md font-semibold">{service.label}</span>
                   </div>
                   <span className={`material-symbols-outlined text-primary-container ${selectedService === service.id ? 'opacity-100' : 'opacity-0'}`}>check_circle</span>
@@ -85,32 +86,33 @@ const BookingPage = () => {
           </section>
 
           {/* Step 2: Calendar Selection */}
-          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg">
-            <div className="flex items-center gap-sm mb-md">
-              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${selectedDate ? 'bg-primary-container text-on-primary-container' : 'bg-surface-variant text-on-surface-variant'}`}>02</span>
+          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg shadow-glow shadow-primary-container/5 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+            <div className="flex items-center gap-sm mb-md relative z-10">
+              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${selectedDate ? 'bg-gradient-ivk text-white shadow-glow-sm' : 'bg-surface-variant text-on-surface-variant'}`}>02</span>
               <h3 className="font-headline-md text-body-lg uppercase tracking-wider">Seleccionar Fecha</h3>
             </div>
-            <div className="bg-surface p-sm rounded-lg border border-outline-variant">
+            <div className="bg-surface p-sm rounded-lg border border-outline-variant relative z-10">
               <div className="flex justify-between items-center mb-sm px-xs">
-                <span className="font-label-sm uppercase tracking-widest text-primary-container">Octubre 2024</span>
+                <span className="font-label-sm uppercase tracking-widest text-primary-container font-bold drop-shadow-[0_0_5px_rgba(255,84,76,0.3)]">Octubre 2024</span>
                 <div className="flex gap-sm">
-                  <span className="material-symbols-outlined text-on-surface-variant cursor-pointer">chevron_left</span>
-                  <span className="material-symbols-outlined text-on-surface-variant cursor-pointer">chevron_right</span>
+                  <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary-container transition-colors">chevron_left</span>
+                  <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary-container transition-colors">chevron_right</span>
                 </div>
               </div>
               <div className="grid grid-cols-7 text-center mb-xs w-full">
                 {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((day, i) => (
-                  <span key={i} className={`font-label-sm ${day === 'D' ? 'text-primary-container' : 'text-on-surface-variant'}`}>{day}</span>
+                  <span key={i} className={`font-label-sm font-bold ${day === 'D' ? 'text-primary-container' : 'text-on-surface-variant'}`}>{day}</span>
                 ))}
               </div>
-              <div className="grid grid-cols-7 gap-y-xs text-center w-full">
+              <div className="grid grid-cols-7 gap-y-xs text-center w-full" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)' }}>
                 {[28, 29, 30].map((d) => (
                   <button key={d} className="h-10 w-full flex items-center justify-center font-label-technical text-on-surface-variant/30 disabled cursor-not-allowed">{d}</button>
                 ))}
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((d) => (
                   <button
                     key={d}
-                    className={`h-10 w-full flex items-center justify-center font-label-technical rounded-lg transition-all ${d === selectedDate ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_15px_#ff544c]' : 'hover:bg-surface-variant text-on-surface-variant'} ${d === 4 || d === 11 ? 'text-primary-container' : ''}`}
+                    className={`h-10 w-full flex items-center justify-center font-label-technical rounded-lg transition-all ${d === selectedDate ? 'bg-gradient-ivk text-white font-bold shadow-glow-strong' : 'hover:bg-surface-variant text-on-surface-variant'} ${d === 4 || d === 11 ? 'text-primary-container' : ''}`}
                     onClick={() => setSelectedDate(d)}
                   >
                     {d < 10 ? `0${d}` : d}
@@ -121,20 +123,21 @@ const BookingPage = () => {
           </section>
 
           {/* Step 3: Time Selection */}
-          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg">
-            <div className="flex items-center gap-sm mb-md">
-              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${selectedTime ? 'bg-primary-container text-on-primary-container' : 'bg-surface-variant text-on-surface-variant'}`}>03</span>
+          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg shadow-glow shadow-primary-container/5 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+            <div className="flex items-center gap-sm mb-md relative z-10">
+              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${selectedTime ? 'bg-gradient-ivk text-white shadow-glow-sm' : 'bg-surface-variant text-on-surface-variant'}`}>03</span>
               <h3 className="font-headline-md text-body-lg uppercase tracking-wider">Seleccionar Hora</h3>
             </div>
-            <div className="flex gap-gutter overflow-x-auto scrollbar-hide pb-xs">
+            <div className="flex gap-gutter overflow-x-auto scrollbar-hide pb-xs relative z-10">
               {times.map((time) => (
                 <button
                   key={time.id}
-                  className={`flex-shrink-0 flex flex-col items-center gap-xs px-lg py-md border rounded-lg group transition-all ${selectedTime === time.id ? 'border-primary-container bg-surface-variant shadow-inner' : 'border-outline-variant hover:border-primary-container'}`}
+                  className={`flex-shrink-0 flex flex-col items-center gap-xs px-lg py-md border rounded-lg group transition-all ${selectedTime === time.id ? 'border-primary-container bg-surface-variant shadow-inner-glow' : 'border-outline-variant hover:border-primary-container'}`}
                   onClick={() => setSelectedTime(time.id)}
                 >
-                  <span className={`material-symbols-outlined ${selectedTime === time.id ? 'text-primary-container' : 'text-on-surface-variant group-hover:text-primary-container'}`}>{time.icon}</span>
-                  <span className="font-label-sm uppercase">{time.label}</span>
+                  <span className={`material-symbols-outlined ${selectedTime === time.id ? 'text-primary-container drop-shadow-[0_0_8px_rgba(255,84,76,0.6)]' : 'text-on-surface-variant group-hover:text-primary-container'}`}>{time.icon}</span>
+                  <span className="font-label-sm uppercase font-bold">{time.label}</span>
                   <span className="font-label-technical text-on-surface-variant">{time.range}</span>
                 </button>
               ))}
@@ -142,16 +145,17 @@ const BookingPage = () => {
           </section>
 
           {/* Step 4: Bike Info */}
-          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg">
-            <div className="flex items-center gap-sm mb-md">
-              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${bikeModel ? 'bg-primary-container text-on-primary-container' : 'bg-surface-variant text-on-surface-variant'}`}>04</span>
+          <section className="p-gutter border border-outline-variant bg-surface-container rounded-lg shadow-glow shadow-primary-container/5 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+            <div className="flex items-center gap-sm mb-md relative z-10">
+              <span className={`font-label-technical text-label-technical px-base py-xs rounded-xs ${bikeModel ? 'bg-gradient-ivk text-white shadow-glow-sm' : 'bg-surface-variant text-on-surface-variant'}`}>04</span>
               <h3 className="font-headline-md text-body-lg uppercase tracking-wider">Detalles</h3>
             </div>
-            <div className="flex flex-col gap-md">
+            <div className="flex flex-col gap-md relative z-10">
               <div>
                 <label className="font-label-sm text-on-surface-variant mb-xs block uppercase font-bold text-[10px] tracking-widest">Modelo de la Moto</label>
                 <input 
-                  className="w-full bg-surface border border-outline-variant rounded-lg p-md text-on-surface focus:outline-none focus:border-primary-container transition-colors font-label-technical" 
+                  className="w-full bg-surface border border-outline-variant rounded-lg p-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/30 transition-all font-label-technical" 
                   placeholder="Ej. Yamaha MT-07" 
                   type="text" 
                   value={bikeModel}
@@ -161,7 +165,7 @@ const BookingPage = () => {
               <div>
                 <label className="font-label-sm text-on-surface-variant mb-xs block uppercase font-bold text-[10px] tracking-widest">Descripción del Problema (Opcional)</label>
                 <textarea 
-                  className="w-full bg-surface border border-outline-variant rounded-lg p-md text-on-surface focus:outline-none focus:border-primary-container transition-colors font-body-md" 
+                  className="w-full bg-surface border border-outline-variant rounded-lg p-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/30 transition-all font-body-md" 
                   placeholder="Describe brevemente lo que necesita tu moto..." 
                   rows="3"
                   value={description}
@@ -175,12 +179,12 @@ const BookingPage = () => {
           <div className="mt-lg px-xs">
             <button 
               onClick={handleReserve}
-              className="w-full bg-primary-container text-on-primary-fixed hover:bg-error-container hover:text-on-primary transition-all active:scale-95 duration-100 py-md rounded-lg font-bold uppercase tracking-widest flex items-center justify-center gap-sm shadow-lg"
+              className="w-full bg-gradient-ivk text-white hover:shadow-glow-strong transition-all active:scale-95 duration-200 py-md rounded-lg font-bold uppercase tracking-widest flex items-center justify-center gap-sm shadow-glow"
             >
               <span className="material-symbols-outlined">event_available</span>
               Reservar Cita
             </button>
-            <p className="text-center font-label-sm text-on-surface-variant mt-md">Recibirás una confirmación vía SMS en minutos.</p>
+            <p className="text-center font-label-sm text-on-surface-variant mt-md italic">Recibirás una confirmación vía SMS en minutos.</p>
           </div>
         </div>
       </main>
