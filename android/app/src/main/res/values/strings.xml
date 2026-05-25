@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">IVK RACING</string>
+    <string name="title_activity_main">IVK RACING</string>
+    <string name="package_name">com.ivkracing.app</string>
+    <string name="custom_url_scheme">com.ivkracing.app</string>
+</resources>
