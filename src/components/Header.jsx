@@ -27,19 +27,19 @@ const Header = ({ children }) => {
           >
             menu
           </button>
-          <div className="h-10 w-10 rounded-sm overflow-hidden border border-divider bg-surface-lvl1">
+          <div className="h-10 w-10 rounded-sm overflow-hidden border border-divider bg-surface-lvl1 p-1">
             <img 
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB-lojq2ypQRMEYjpm6roWNsKnv58FWAL8QbR4xomkokqb6qbUT8Uum31_M_lBNs8en-Q5b2GXwynfDgss9DjWqtKwZCJ-Zt8Y3vvgbY3oFSI-HnfjOMQSOnTw7B-drMjiHVhSE1VE2zFWSJLBztgDeJZKx3XzD03jt7CWnfdDe_YDluWXLAFpNnLOXISRYYRzY7WUnm1z3aG2ha-92-1ACWufL1rK54rY62wbwAJWpAjsGjw8-Uafv3OGGODKkopP98oRL_mvCA" 
               alt="IVK-RACING" 
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain brightness-125"
             />
           </div>
-          <span className="font-display-lg text-primary text-xl ml-2 uppercase tracking-tighter">IVK-RACING</span>
+          <span className="font-display-lg text-primary text-xl ml-2 uppercase italic font-black tracking-tighter">IVK-RACING</span>
         </div>
         
         <div className="flex items-center gap-md">
           {children}
-          <button className="material-symbols-outlined text-on-surface-variant hover:bg-surface-lvl1 transition-colors p-base rounded-full focus:outline-none hover:text-primary">
+          <button className="material-symbols-outlined text-primary hover:bg-surface-lvl1 transition-colors p-base rounded-full focus:outline-none">
             notifications
           </button>
         </div>
