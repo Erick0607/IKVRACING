@@ -13,7 +13,7 @@ const BottomNav = () => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center py-base px-gutter bg-surface-container/95 backdrop-blur-xl border-t border-outline-variant shadow-lg z-50">
+    <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center py-base px-gutter bg-[#1E1E1E]/95 backdrop-blur-xl border-t border-[#37474F] shadow-lg z-50">
       {navItems.map((item) => {
         const isActive = location.pathname === item.path;
         return (
@@ -22,15 +22,15 @@ const BottomNav = () => {
             onClick={() => navigate(item.path)}
             className={`flex flex-col items-center justify-center transition-all duration-300 relative group ${
               isActive 
-                ? 'text-primary' 
-                : 'text-on-surface-variant hover:text-primary'
+                ? 'text-[#E53935]' 
+                : 'text-[#B0BEC5] hover:text-[#E53935]'
             }`}
           >
             {isActive && (
-              <span className="absolute -top-base w-8 h-1 bg-primary rounded-full shadow-glow-sm"></span>
+              <span className="absolute -top-base w-8 h-1 bg-[#E53935] rounded-full shadow-glow-sm"></span>
             )}
             <span 
-              className={`material-symbols-outlined transition-transform duration-300 ${isActive ? 'scale-110 drop-shadow-[0_0_8px_rgba(255,180,172,0.4)]' : 'group-hover:scale-110'}`}
+              className={`material-symbols-outlined transition-transform duration-300 ${isActive ? 'scale-110 drop-shadow-[0_0_8px_rgba(229,57,53,0.4)]' : 'group-hover:scale-110'}`}
               style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
             >
               {item.icon}

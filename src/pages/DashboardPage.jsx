@@ -11,23 +11,23 @@ const DashboardPage = () => {
       label: 'CITAS DE HOY',
       value: '0',
       icon: 'calendar_month',
-      borderColor: 'border-primary-container',
-      iconColor: 'text-primary-container',
+      borderColor: 'border-primary',
+      iconColor: 'text-primary',
     },
     {
       label: 'INGRESOS SEMANALES',
       value: 'S/ 0',
       icon: 'payments',
-      borderColor: 'border-secondary',
-      iconColor: 'text-secondary',
+      borderColor: 'border-primary',
+      iconColor: 'text-primary',
       trend: '+0%',
     },
     {
       label: 'STOCK BAJO',
       value: '08',
       icon: 'inventory_2',
-      borderColor: 'border-error-container',
-      iconColor: 'text-error',
+      borderColor: 'border-secondary',
+      iconColor: 'text-on-surface-variant',
       action: 'Revisar',
     },
   ]);
@@ -122,15 +122,15 @@ const DashboardPage = () => {
         {/* Bento Grid: Quick Metrics */}
         <section className="grid grid-cols-2 md:grid-cols-3 gap-gutter mb-lg">
           {metrics.map((metric, i) => (
-            <div key={i} className={`bg-surface-lvl1 p-md rounded-lg border-l-4 ${metric.borderColor.replace('primary-container', 'primary').replace('error-container', 'primary')} shadow-industrial-lift flex flex-col justify-between ${i === 2 ? 'col-span-2 md:col-span-1' : ''} hover:bg-surface-lvl2 transition-all duration-300 relative overflow-hidden group`}>
+            <div key={i} className={`bg-[#1E1E1E] p-md rounded-lg border-l-4 ${i < 2 ? 'border-[#E53935]' : 'border-[#37474F]'} shadow-industrial-lift flex flex-col justify-between ${i === 2 ? 'col-span-2 md:col-span-1' : ''} hover:bg-[#2C2C2C] transition-all duration-300 relative overflow-hidden group`}>
               <div className="relative z-10">
-                <span className={`material-symbols-outlined ${metric.iconColor.replace('primary-container', 'primary')} mb-sm drop-shadow-[0_0_5px_currentColor]`}>{metric.icon}</span>
-                <p className="font-label-technical text-[10px] text-on-surface-variant uppercase font-black tracking-widest">{metric.label}</p>
+                <span className={`material-symbols-outlined ${i < 2 ? 'text-[#E53935]' : 'text-[#B0BEC5]'} mb-sm drop-shadow-[0_0_5px_currentColor]`}>{metric.icon}</span>
+                <p className="font-label-technical text-[10px] text-[#B0BEC5] uppercase font-black tracking-widest">{metric.label}</p>
               </div>
               <div className="flex items-baseline gap-xs mt-sm relative z-10">
-                <p className="font-display-lg text-4xl font-black text-on-surface tracking-tighter">{metric.value}</p>
-                {metric.trend && <span className="text-success font-label-technical text-[10px] font-bold">{metric.trend}</span>}
-                {metric.action && <button className="font-label-technical text-[10px] underline text-primary font-bold hover:text-primary transition-colors uppercase tracking-widest">{metric.action}</button>}
+                <p className="font-display-lg text-4xl font-black text-[#E53935] tracking-tighter">{metric.value}</p>
+                {metric.trend && <span className="text-[#66BB6A] font-label-technical text-[10px] font-bold">{metric.trend}</span>}
+                {metric.action && <button className="font-label-technical text-[10px] underline text-[#B0BEC5] font-bold hover:text-[#E53935] transition-colors uppercase tracking-widest">{metric.action}</button>}
               </div>
             </div>
           ))}
@@ -140,57 +140,57 @@ const DashboardPage = () => {
         <section className="flex flex-wrap gap-sm mb-lg">
           <button 
             onClick={() => navigate('/booking')}
-            className="flex-1 min-w-[160px] bg-primary text-white h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all shadow-glow hover:shadow-glow-strong uppercase tracking-widest text-[12px]"
+            className="flex-1 min-w-[160px] bg-[#E53935] text-white h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all shadow-glow hover:shadow-glow-strong uppercase tracking-widest text-[12px]"
           >
-            <span className="material-symbols-outlined">motorcycle</span>
-            Registrar Moto
+            <span className="material-symbols-outlined text-white">motorcycle</span>
+            REGISTRAR MOTO
           </button>
           <button 
             onClick={() => navigate('/store')}
-            className="flex-1 min-w-[160px] bg-surface-lvl1 border border-divider text-on-surface h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all hover:bg-surface-lvl2 uppercase tracking-widest text-[12px] shadow-sm"
+            className="flex-1 min-w-[160px] bg-[#1E1E1E] border border-[#E53935] text-white h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all hover:bg-[#2C2C2C] uppercase tracking-widest text-[12px] shadow-sm"
           >
-            <span className="material-symbols-outlined">add_shopping_cart</span>
-            Tienda
+            <span className="material-symbols-outlined text-[#E53935]">add_shopping_cart</span>
+            TIENDA
           </button>
         </section>
 
         {/* Upcoming Appointments List */}
-        <section className="bg-surface-lvl1 rounded-lg overflow-hidden mb-lg border border-divider shadow-industrial-lift relative">
-          <div className="p-md border-b border-divider flex justify-between items-center bg-surface-lvl2">
-            <h3 className="font-display-lg text-lg text-on-surface uppercase tracking-wider flex items-center gap-sm">
-              <span className="w-2 h-2 bg-primary rounded-full shadow-glow-sm"></span>
-              Citas Próximas
+        <section className="bg-[#1E1E1E] rounded-lg overflow-hidden mb-lg border border-[#37474F] shadow-industrial-lift relative">
+          <div className="p-md border-b border-[#37474F] flex justify-between items-center bg-[#2C2C2C]">
+            <h3 className="font-display-lg text-lg text-white uppercase tracking-wider flex items-center gap-sm">
+              <span className="w-2 h-2 bg-[#E53935] rounded-full shadow-glow-sm"></span>
+              CITAS PRÓXIMAS
             </h3>
-            <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">filter_list</span>
+            <span className="material-symbols-outlined text-[#B0BEC5] cursor-pointer hover:text-[#E53935] transition-colors">filter_list</span>
           </div>
-          <div className="divide-y divide-divider">
+          <div className="divide-y divide-[#37474F]">
             {appointments.map((apt) => (
-              <div key={apt.id} className="p-md flex items-center gap-md hover:bg-surface-lvl2 transition-all cursor-pointer group border-l-4 border-transparent hover:border-primary">
-                <div className={`w-12 h-12 rounded-sm bg-surface-lvl2 flex items-center justify-center ${apt.iconColor.replace('text-primary', 'text-primary')} shadow-inner`}>
+              <div key={apt.id} className="p-md flex items-center gap-md hover:bg-[#2C2C2C] transition-all cursor-pointer group border-l-4 border-transparent hover:border-[#E53935]">
+                <div className={`w-12 h-12 rounded-sm bg-[#2C2C2C] flex items-center justify-center ${apt.status === 'PENDIENTE' ? 'text-[#E53935]' : 'text-[#B0BEC5]'} shadow-inner`}>
                   <span className="material-symbols-outlined group-hover:scale-110 transition-transform">{apt.icon}</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
-                    <p className="font-display-lg text-on-surface uppercase tracking-tight group-hover:text-primary transition-colors text-sm">{apt.name}</p>
-                    <p className="font-label-technical text-[12px] text-primary font-bold">{apt.time}</p>
+                    <p className="font-display-lg text-white uppercase tracking-tight group-hover:text-[#E53935] transition-colors text-sm">{apt.name}</p>
+                    <p className="font-label-technical text-[12px] text-[#E53935] font-bold">{apt.time}</p>
                   </div>
-                  <p className="font-label-technical text-[10px] text-on-surface-variant uppercase tracking-wider">{apt.bike}</p>
+                  <p className="font-label-technical text-[10px] text-[#B0BEC5] uppercase tracking-wider">{apt.bike}</p>
                 </div>
-                <div className={`px-base py-xs text-white text-[9px] font-black rounded-sm shadow-sm uppercase tracking-widest ${apt.status === 'PENDIENTE' ? 'bg-primary' : 'bg-secondary'}`}>
+                <div className={`px-base py-xs text-white text-[9px] font-black rounded-sm shadow-sm uppercase tracking-widest ${apt.status === 'PENDIENTE' ? 'bg-[#E53935]' : 'bg-[#37474F]'}`}>
                   {apt.status}
                 </div>
               </div>
             ))}
           </div>
-          <button className="w-full py-md text-center font-label-technical text-primary hover:bg-surface-lvl2 transition-colors uppercase tracking-widest font-black border-t border-divider text-[10px]">
-            Ver Historial Completo
+          <button className="w-full py-md text-center font-label-technical text-[#E53935] hover:bg-[#2C2C2C] transition-colors uppercase tracking-widest font-black border-t border-[#37474F] text-[10px]">
+            VER HISTORIAL COMPLETO
           </button>
         </section>
 
         {/* System Alerts / Status */}
-        <section className="bg-surface-lvl1 border border-divider p-md rounded-lg flex items-center gap-md">
-          <span className="material-symbols-outlined text-primary animate-pulse">security</span>
-          <p className="font-label-technical text-[10px] text-on-surface-variant leading-tight uppercase tracking-wider">
+        <section className="bg-[#1E1E1E] border border-[#37474F] p-md rounded-lg flex items-center gap-md">
+          <span className="material-symbols-outlined text-[#E53935] animate-pulse">security</span>
+          <p className="font-label-technical text-[10px] text-[#B0BEC5] leading-tight uppercase tracking-wider">
             Sincronización segura activa • MotoTech Pro v1.0.4
           </p>
         </section>

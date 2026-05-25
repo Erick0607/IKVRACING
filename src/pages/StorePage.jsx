@@ -74,7 +74,7 @@ const StorePage = () => {
   };
 
   return (
-    <div className="font-body-md text-on-surface bg-background min-h-screen flex flex-col selection:bg-primary selection:text-white">
+    <div className="font-body-md text-white bg-[#121212] min-h-screen flex flex-col selection:bg-[#E53935] selection:text-white">
       {/* TopAppBar Shell */}
       <Header>
         <div className="relative">
@@ -87,12 +87,12 @@ const StorePage = () => {
                 }
               }
             }}
-            className="material-symbols-outlined text-primary hover:bg-surface-lvl1 transition-colors p-base rounded-full cursor-pointer focus:outline-none"
+            className="material-symbols-outlined text-[#E53935] hover:bg-[#1E1E1E] transition-colors p-base rounded-full cursor-pointer focus:outline-none"
           >
             shopping_cart
           </button>
           {cart.length > 0 && (
-            <span className="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full pointer-events-none shadow-glow-sm">
+            <span className="absolute -top-1 -right-1 bg-[#E53935] text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full pointer-events-none shadow-glow-sm">
               {cart.length}
             </span>
           )}
@@ -104,9 +104,9 @@ const StorePage = () => {
         {/* Search & Filter Section */}
         <section className="mt-base mb-lg">
           <div className="relative w-full group">
-            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-primary transition-colors">search</span>
+            <span className="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-[#E53935] transition-colors">search</span>
             <input 
-              className="w-full bg-surface-lvl1 border border-divider text-on-surface-variant rounded-sm py-4 pl-12 pr-base focus:border-primary placeholder:text-on-surface-variant/30 font-label-technical focus:outline-none transition-all shadow-sm uppercase tracking-wider text-sm" 
+              className="w-full bg-[#1E1E1E] border border-[#37474F] text-[#B0BEC5] rounded-sm py-4 pl-12 pr-base focus:border-[#E53935] placeholder:text-[#B0BEC5]/30 font-label-technical focus:outline-none transition-all shadow-sm uppercase tracking-wider text-sm" 
               placeholder="SEARCH STREET PARTS..." 
               type="text" 
             />
@@ -117,7 +117,7 @@ const StorePage = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`flex-shrink-0 font-label-technical text-[12px] px-8 py-3 transition-all uppercase tracking-widest font-black ${activeCategory === cat ? 'bg-primary text-white' : 'bg-surface-lvl1 text-on-surface-variant hover:bg-surface-lvl2 border-b-2 border-transparent'}`}
+                className={`flex-shrink-0 font-label-technical text-[12px] px-8 py-3 transition-all uppercase tracking-widest font-black ${activeCategory === cat ? 'bg-[#E53935] text-white' : 'bg-[#1E1E1E] text-[#B0BEC5] hover:bg-[#2C2C2C] border-b-2 border-transparent'}`}
               >
                 {cat === 'Todos' ? 'ALL' : cat === 'Cascos' ? 'HELMETS' : cat === 'Neumáticos' ? 'TIRES' : cat === 'Repuestos' ? 'PARTS' : cat.toUpperCase()}
               </button>
@@ -128,8 +128,8 @@ const StorePage = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-surface-lvl1 border border-divider rounded-sm overflow-hidden flex flex-col group transition-all hover:border-primary/50 shadow-industrial-lift">
-              <div className="relative aspect-square overflow-hidden bg-surface-lvl2">
+            <div key={product.id} className="bg-[#1E1E1E] border border-[#37474F] rounded-sm overflow-hidden flex flex-col group transition-all hover:border-[#E53935]/50 shadow-industrial-lift">
+              <div className="relative aspect-square overflow-hidden bg-[#2C2C2C]">
                 <img 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                   src={product.image} 
@@ -137,19 +137,19 @@ const StorePage = () => {
                 />
                 {product.tag && (
                   <div className="absolute top-4 left-0">
-                    <span className={`${product.tag === 'STREET SPEC' || product.tag === 'OFERTA' ? 'bg-primary' : 'bg-secondary'} text-white text-[9px] font-black px-3 py-1 uppercase tracking-widest italic shadow-md inline-block transform -skew-x-12 ml-[-4px]`}>
+                    <span className={`${product.tag === 'STREET SPEC' || product.tag === 'OFERTA' ? 'bg-[#E53935]' : 'bg-[#37474F]'} text-white text-[9px] font-black px-3 py-1 uppercase tracking-widest italic shadow-md inline-block transform -skew-x-12 ml-[-4px]`}>
                       {product.tag}
                     </span>
                   </div>
                 )}
               </div>
-              <div className="p-md flex flex-col flex-grow bg-surface-lvl1">
-                <h3 className="font-display-lg text-[12px] text-on-surface line-clamp-2 min-h-[34px] uppercase font-black tracking-tight leading-tight group-hover:text-primary transition-colors">{product.name}</h3>
+              <div className="p-md flex flex-col flex-grow bg-[#1E1E1E]">
+                <h3 className="font-display-lg text-[12px] text-white line-clamp-2 min-h-[34px] uppercase font-black tracking-tight leading-tight group-hover:text-[#E53935] transition-colors">{product.name}</h3>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="font-label-technical text-primary font-black text-xl tracking-tighter">{product.price}</span>
+                  <span className="font-label-technical text-[#E53935] font-black text-xl tracking-tighter">{product.price}</span>
                   <button 
                     onClick={() => addToCart(product)}
-                    className="bg-primary p-2 text-white hover:bg-primary/90 transition-all active:scale-90 shadow-glow-sm"
+                    className="bg-[#E53935] p-2 text-white hover:bg-[#E53935]/90 transition-all active:scale-90 shadow-glow-sm"
                   >
                     <span className="material-symbols-outlined text-[20px]">add_shopping_cart</span>
                   </button>
@@ -161,7 +161,7 @@ const StorePage = () => {
 
         {/* Pagination/Load More */}
         <div className="mt-xl flex justify-center">
-          <button className="bg-surface-lvl1 border border-divider text-on-surface font-label-technical text-[10px] px-xl py-md rounded-sm hover:bg-surface-lvl2 transition-all active:scale-95 uppercase tracking-widest font-black shadow-sm">
+          <button className="bg-[#1E1E1E] border border-[#37474F] text-white font-label-technical text-[10px] px-xl py-md rounded-sm hover:bg-[#2C2C2C] transition-all active:scale-95 uppercase tracking-widest font-black shadow-sm">
             LOAD MORE PARTS
           </button>
         </div>

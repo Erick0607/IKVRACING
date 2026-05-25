@@ -8,19 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Core Industrial Palette (Descriptions)
         "background": "#121212",
         "surface": "#121212",
         "surface-lvl1": "#1E1E1E",
         "surface-lvl2": "#2C2C2C",
-        "primary": "#E53935", // Sport Red
-        "secondary": "#37474F", // Carbon Grey
+        "primary": "#E53935",
+        "secondary": "#37474F",
         "on-surface": "#FFFFFF",
         "on-surface-variant": "#B0BEC5",
         "success": "#66BB6A",
         "divider": "#37474F",
-
-        // Mapped Material Tokens (to maintain compatibility)
         "surface-bright": "#37393a",
         "surface-container-lowest": "#0c0f0f",
         "surface-container-low": "#1a1c1c",
@@ -35,7 +32,6 @@ export default {
         "outline": "#37474F",
         "outline-variant": "#37474F",
         "error": "#E53935",
-        
         "ivk-red": "#E53935",
         "ivk-black": "#121212"
       },
