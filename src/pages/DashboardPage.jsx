@@ -115,22 +115,22 @@ const DashboardPage = () => {
       <main className="pt-24 pb-24 px-margin-mobile max-w-5xl mx-auto">
         {/* Welcome Section */}
         <section className="mb-lg">
-          <h2 className="font-headline-lg-mobile text-on-surface mb-xs uppercase tracking-tight">Panel de Control</h2>
+          <h2 className="font-display-lg text-headline-lg-mobile text-on-surface mb-xs uppercase tracking-tighter">Panel de Control</h2>
           <p className="font-body-md text-on-surface-variant">Gestión técnica y operativa del taller.</p>
         </section>
 
         {/* Bento Grid: Quick Metrics */}
         <section className="grid grid-cols-2 md:grid-cols-3 gap-gutter mb-lg">
           {metrics.map((metric, i) => (
-            <div key={i} className={`bg-surface-container p-md rounded-lg border-l-4 ${metric.borderColor} shadow-sm flex flex-col justify-between ${i === 2 ? 'col-span-2 md:col-span-1' : ''} hover:bg-surface-container-high transition-all duration-300 relative overflow-hidden group`}>
+            <div key={i} className={`bg-surface-lvl1 p-md rounded-lg border-l-4 ${metric.borderColor.replace('primary-container', 'primary').replace('error-container', 'primary')} shadow-industrial-lift flex flex-col justify-between ${i === 2 ? 'col-span-2 md:col-span-1' : ''} hover:bg-surface-lvl2 transition-all duration-300 relative overflow-hidden group`}>
               <div className="relative z-10">
-                <span className={`material-symbols-outlined ${metric.iconColor} mb-sm drop-shadow-[0_0_5px_currentColor]`}>{metric.icon}</span>
+                <span className={`material-symbols-outlined ${metric.iconColor.replace('primary-container', 'primary')} mb-sm drop-shadow-[0_0_5px_currentColor]`}>{metric.icon}</span>
                 <p className="font-label-technical text-[10px] text-on-surface-variant uppercase font-black tracking-widest">{metric.label}</p>
               </div>
               <div className="flex items-baseline gap-xs mt-sm relative z-10">
                 <p className="font-display-lg text-4xl font-black text-on-surface tracking-tighter">{metric.value}</p>
-                {metric.trend && <span className="text-green-400 font-label-technical text-[10px] font-bold">{metric.trend}</span>}
-                {metric.action && <button className="font-label-technical text-[10px] underline text-primary font-bold hover:text-primary-container transition-colors uppercase tracking-widest">{metric.action}</button>}
+                {metric.trend && <span className="text-success font-label-technical text-[10px] font-bold">{metric.trend}</span>}
+                {metric.action && <button className="font-label-technical text-[10px] underline text-primary font-bold hover:text-primary transition-colors uppercase tracking-widest">{metric.action}</button>}
               </div>
             </div>
           ))}
@@ -140,14 +140,14 @@ const DashboardPage = () => {
         <section className="flex flex-wrap gap-sm mb-lg">
           <button 
             onClick={() => navigate('/booking')}
-            className="flex-1 min-w-[160px] bg-gradient-ivk text-white h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all shadow-md hover:shadow-glow-sm uppercase tracking-widest text-[12px]"
+            className="flex-1 min-w-[160px] bg-primary text-white h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all shadow-glow hover:shadow-glow-strong uppercase tracking-widest text-[12px]"
           >
             <span className="material-symbols-outlined">motorcycle</span>
             Registrar Moto
           </button>
           <button 
             onClick={() => navigate('/store')}
-            className="flex-1 min-w-[160px] bg-surface-container border border-outline-variant text-on-surface h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all hover:bg-surface-container-high uppercase tracking-widest text-[12px] shadow-sm"
+            className="flex-1 min-w-[160px] bg-surface-lvl1 border border-divider text-on-surface h-12 flex items-center justify-center gap-sm rounded-sm font-black active:scale-95 transition-all hover:bg-surface-lvl2 uppercase tracking-widest text-[12px] shadow-sm"
           >
             <span className="material-symbols-outlined">add_shopping_cart</span>
             Tienda
@@ -155,41 +155,41 @@ const DashboardPage = () => {
         </section>
 
         {/* Upcoming Appointments List */}
-        <section className="bg-surface-container rounded-lg overflow-hidden mb-lg border border-outline-variant shadow-sm relative">
-          <div className="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-high/50">
-            <h3 className="font-headline-md text-on-surface text-lg uppercase tracking-wider font-bold flex items-center gap-sm">
-              <span className="w-2 h-2 bg-primary-container rounded-full shadow-glow-sm"></span>
+        <section className="bg-surface-lvl1 rounded-lg overflow-hidden mb-lg border border-divider shadow-industrial-lift relative">
+          <div className="p-md border-b border-divider flex justify-between items-center bg-surface-lvl2">
+            <h3 className="font-display-lg text-lg text-on-surface uppercase tracking-wider flex items-center gap-sm">
+              <span className="w-2 h-2 bg-primary rounded-full shadow-glow-sm"></span>
               Citas Próximas
             </h3>
             <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">filter_list</span>
           </div>
-          <div className="divide-y divide-outline-variant">
+          <div className="divide-y divide-divider">
             {appointments.map((apt) => (
-              <div key={apt.id} className="p-md flex items-center gap-md hover:bg-surface-container-high transition-all cursor-pointer group border-l-4 border-transparent hover:border-primary-container">
-                <div className={`w-12 h-12 rounded-sm bg-surface-container-highest flex items-center justify-center ${apt.iconColor} shadow-inner`}>
+              <div key={apt.id} className="p-md flex items-center gap-md hover:bg-surface-lvl2 transition-all cursor-pointer group border-l-4 border-transparent hover:border-primary">
+                <div className={`w-12 h-12 rounded-sm bg-surface-lvl2 flex items-center justify-center ${apt.iconColor.replace('text-primary', 'text-primary')} shadow-inner`}>
                   <span className="material-symbols-outlined group-hover:scale-110 transition-transform">{apt.icon}</span>
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
-                    <p className="font-body-md text-on-surface font-black uppercase tracking-tight group-hover:text-primary transition-colors text-sm">{apt.name}</p>
+                    <p className="font-display-lg text-on-surface uppercase tracking-tight group-hover:text-primary transition-colors text-sm">{apt.name}</p>
                     <p className="font-label-technical text-[12px] text-primary font-bold">{apt.time}</p>
                   </div>
                   <p className="font-label-technical text-[10px] text-on-surface-variant uppercase tracking-wider">{apt.bike}</p>
                 </div>
-                <div className={`px-base py-xs text-white text-[9px] font-black rounded-sm shadow-sm uppercase tracking-widest ${apt.statusColor} ${apt.status === 'PENDIENTE' ? 'bg-gradient-ivk' : ''}`}>
+                <div className={`px-base py-xs text-white text-[9px] font-black rounded-sm shadow-sm uppercase tracking-widest ${apt.status === 'PENDIENTE' ? 'bg-primary' : 'bg-secondary'}`}>
                   {apt.status}
                 </div>
               </div>
             ))}
           </div>
-          <button className="w-full py-md text-center font-label-sm text-primary hover:bg-surface-container-high transition-colors uppercase tracking-widest font-black border-t border-outline-variant text-[10px]">
+          <button className="w-full py-md text-center font-label-technical text-primary hover:bg-surface-lvl2 transition-colors uppercase tracking-widest font-black border-t border-divider text-[10px]">
             Ver Historial Completo
           </button>
         </section>
 
         {/* System Alerts / Status */}
-        <section className="bg-surface-container-low border border-outline-variant p-md rounded-lg flex items-center gap-md">
-          <span className="material-symbols-outlined text-primary-container animate-pulse">security</span>
+        <section className="bg-surface-lvl1 border border-divider p-md rounded-lg flex items-center gap-md">
+          <span className="material-symbols-outlined text-primary animate-pulse">security</span>
           <p className="font-label-technical text-[10px] text-on-surface-variant leading-tight uppercase tracking-wider">
             Sincronización segura activa • MotoTech Pro v1.0.4
           </p>
